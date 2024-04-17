@@ -55,14 +55,12 @@ $('.a0').click(function(){
 
 
 //javascript
-  //all countries
-  //https://restcountries.com/v3.1/all
-/*async function api(){
+async function quote(){
   const response=await fetch('https://quote-garden.onrender.com/api/v3/quotes')
   const data=await response.json()
   var rand=Math.floor(Math.random()*10);
-  console.log(rand);
-  var page=data['pagination'].currentPage;
+  console.log(data);
+ /* var page=data['pagination'].currentPage;
   var author=data['data'][rand].quoteAuthor;
   var genre=data['data'][rand].quoteGenre;
   var text=' ';
@@ -72,41 +70,7 @@ $('.a0').click(function(){
   for( var i=0; i<10;i++){
    text+='<div class="son">'+data['data'][i].quoteAuthor+'</div>';
   }*/
-  async function api(){
-    const response=await fetch('https://restcountries.com/v3.1/region/Europe')
-    const data=await response.json()
-    var rand=Math.floor(Math.random()*10);
-    //console.log(data[11]);
-    var cont=data[13];
-    var name=document.querySelector('#name');var name2=document.querySelector('#name2');
-    var name3=document.querySelector('#name3');var name4=document.querySelector('#name4');
-    var name5=document.querySelector('#name5');
-  /*if(cont.altSpellings[3]!=null){name.innerHTML=cont.altSpellings[3]} else{name.innerHTML=cont.altSpellings[2]};
-  name2.innerHTML=cont.altSpellings[0];  if(cont.altSpellings[3]!=null){name3.innerHTML=cont.altSpellings[2];}
-  if(cont.altSpellings[1]!=null){name4.innerHTML=cont.altSpellings[1];}
-  if(cont.altSpellings[4]!=null){name5.innerHTML=cont.altSpellings[4]}
-
-  var text='';
-  for(var i=0; i<data.length; i++){
-  text +=`
-      <section>
-          <div id="name"><a href='/com/${data.name}'>${data.name}</a></div>
-          <div class="div-name-spans">
-          <span id="name2">${data[i].altSpellings[0]}</span><span id="name3"></span><span id="name4"></span><span id="name5"></span></div>
-      </section>
-  
-  `;
-  }
-
-  document.querySelector('#pag').innerHTML=text;*/
-  //document.querySelector('#pag').innerHTML=page;
-  //data.map(function(cont){console.log('<h1>'+cont[0][0]+'</h1>')}) 
-  
-
-  /*`<select id="apiAll" onchange=changeThis()>
-  <Option>choose</Option>
-  
-  </select>`*/
+ 
   
 }
 //api()
