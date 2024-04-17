@@ -1,0 +1,137 @@
+.j-c-s-a{justify-content: space-around;}
+.j-c-s-b{justify-content: space-between;}
+
+.lightgr-back{background: lightseagreen;}
+.white{color: white;} .green-back{background: #098e61;} .bl-back{background: #2870a7;}
+.dark-bl-back{background: #1b0e6b;}
+.height70{height: 70vh;} 
+.center{margin: 0 auto;width: fit-content;display: block;}
+.m-b-sm{margin-bottom: 3vh;} .m-b-md{margin-bottom: 5vh;} .m-b-lg{margin-bottom: 10vh;}
+.height30{height: 30vh;}
+.alone{display: block;}
+
+
+
+select{
+    width: 20vw;
+}
+.one,.pag{
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.one section,.pag section{
+    max-width: 60vw;
+    border: 2px solid white;
+    height: 10vh;
+    margin-bottom: 5vh;
+    background: #e47fe5;
+    align-content: center;
+}
+.div-name-spans{
+    display: flex;
+    justify-content: space-between;
+}
+.div-name-spans span{
+    margin-right: 1vw;
+}
+.flex{
+    display: flex;
+}
+.flex-continents,.flex-countires{
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+.flex-continents{
+}
+.flex-continents div,.flex-countires div{
+    border: 1px solid #3fe50c;
+    width: calc(90% / 3);
+    height: 20vh;
+    margin-bottom: 5vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+.EuropeConts-parent{
+    min-height: 80vh;
+}
+.EuropeConts{
+    background: white;
+}
+.flex-countires div{
+    border: 1px solid #00d5ff;
+    background: aliceblue;
+    width: calc(90% / 5);
+    align-items: center;
+    font-size: large;
+}
+.btn-back{
+    height: 10vh;
+    align-self: center;
+    border: none;
+    font-size: large;
+}
+.names div{
+    color: blue;
+    margin-right: 3vw;
+}
+.inside-api-container{
+    justify-content: space-between;
+}
+.inside-api-container .left-right{
+ width: 25%;
+}
+.api-container .flex div{
+    font-size: 1.6vw;
+}
+.api-container .left{
+    width: 65%;
+    background: aliceblue;
+    padding: 1vh 1vw;
+}
+.left h1{
+    font-size: xxx-large;
+    text-transform: uppercase;
+}
+.api-container .left h4{
+    font-weight: normal;
+    color: crimson;
+}
+.api-container .right{
+    width: 30%;
+}
+.api-container .right img{
+    width: 100%;
+    height: 50vh;
+}
+.left-left{
+    color: #34a910;
+}
+.map a{
+    width: 100%;
+    border: 1px solid #b1a8a8;
+    background: #fff3e4;
+    display: block;
+    height: 50vh;
+    font-size: 3vw;
+    font-family: cursive;
+    letter-spacing: 1vw;
+    font-variant: small-caps;
+    align-content: center;
+    text-align: center;
+}
+h3 span,h4 span{
+    color: gray;
+    font-weight: normal;
+}
+.bottom-div{
+    height: 15vh;
+    margin-top: 5vh;
+    justify-content: center;
+}
+.bottom-div h2{
+    align-self: center;
+}
