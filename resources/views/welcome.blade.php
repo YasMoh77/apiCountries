@@ -11,22 +11,31 @@
                 
 
              <!--countries api -->
+             
             <section>
                         <div class="flex j-c-s-a lightgr-back white height30">
                             <h1>Our amazing world</h1>
+                            <select id="filterSelect">
+                                <option value="0">Search by ...</option>
+                                <option value="1">Country Name</option>
+                                <option value="2">Capital</option>
+                            </select>
+                            <input type="text" id="filterText">
+                            <button id="btnS">Search</button>
                         </div>
 
-                        <div id="container">
+                        <div class="parent" id="container">
                             <div class="flex flex-continents">
-                                <div><h1><a href="{{url('/asia')}}"> Asia </a></h1></div>
-                                <div><h1> <a href="{{url('/afr')}}"> Africa</a></h1></div>
-                                <div><h1><a href="{{url('/eur')}}"> Europe</a></h1></div>
-                                <div><h1><a href="{{url('/namerica')}}"> North America</a></h1></div>
-                                <div><h1><a href="{{url('/samerica')}}"> South America</a></h1></div>
-                                <div><h1><a href="{{url('/samerica')}}">Australia </a></h1></div>
+                                <h1 id="h1Asia">Asia</h1>
+                                <h1 id="h1Afr">Africa</h1>
+                                <h1 id="h1Eur">Europe</h1>
+                                <h1 id="h1Na">North America</h1>
+                                <h1 id="h1Sa">South America</h1>
+                                <h1 id="h1Aus">Australia</h1>
                             </div>
-                            <div></div>
+                            <div id="showMain"></div>
                         </div>
+                        <div id="showOneCont"></div>
             </section>
 
         
