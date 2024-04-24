@@ -78,18 +78,16 @@ async function quote(){
 
 //javascript //https://quote-garden.onrender.com/api/v3/quotes
 //execute search
-let filterS=document.getElementById('filterSelect');
-let filterT=document.getElementById('filterText');
+let select=document.getElementById('filterSelect');
+let text=document.getElementById('filterText');
 
 
 showAny=(anyCont,searchT)=>{
   anyCont.map(dt=>{
     var showMain=document.getElementById('showMain');
-
     showMain.innerHTML=
-    "<div class='flex j-c-s-a bl-back white m-b-md'>"
+    "<div class='flex j-c-s-a bl-back white'>"
         +"<h1 class='' id='head'>Search Results for ("+searchT+")</h1>"
-        +"<button class='btn-back white dark-bl-back' onclick='backToCountries()' >Back to countries</button>"
     +"</div>"
     +"<div class='api-container flex j-c-s-b'>"
         +"<div class='left'>"//start class left
@@ -137,21 +135,67 @@ showAny=(anyCont,searchT)=>{
            +"<div class='map flex'><a target='_blank' href='"+dt.maps.googleMaps+"'>show map</a></div>"//coatOfarms
         +"</div>"//end class right
     +"</div>"//end api-container
-    +"<div onclick='backToCountries()' class='bottom-div m-b-lg bl-back white flex'><h2>Back to countries</h2></div>"//bottom div
+    +"<div class='bottom-div bl-back white flex'><h2></h2></div>"//bottom div
   });
 }
+
+
 //get search Data
 async function filterFunc(searchS,searchT){
-  if(searchS==1){
-    const res=await fetch('https://restcountries.com/v3.1/name/'+searchT+'')
-    const anyCont=await res.json(); 
-    var showMain=document.getElementById('showMain');
-    if(anyCont.status==404){showMain.innerHTML='no';}
-    else{showAny(anyCont,searchT);}
-    //console.log(data.status);
+      // show spinner
+      let btn=document.getElementById('btnS');
+      let aa=document.createElement('span');
+      aa.setAttribute('class','spinner-border');
+      aa.classList.add('spin');
+      btn.insertBefore(aa,btn.firstChild);
+
+   if(select.value==1&&text.value!=''){
+        //search by country name
+        const res=await fetch('https://restcountries.com/v3.1/name/'+searchT+'')
+        const anyCont=await res.json(); 
+        aa.removeAttribute('class');
+        var showMain=document.getElementById('showMain');
+        if(anyCont.status==404){//
+          showMain.innerHTML='<h3 style="background:red;padding:1vh 1vw"><p style="margin:0 auto; width:fit-content;color:white">No search Results</p></h3>';
+        }else{showAny(anyCont,searchT);}
     
-     
-  }
+  }else if(select.value==2&&text.value!=''){
+        //search by capital
+        const res=await fetch('https://restcountries.com/v3.1/capital/'+searchT+'')
+        const anyCont=await res.json(); 
+        aa.removeAttribute('class');
+        var showMain=document.getElementById('showMain');
+        if(anyCont.status==404){//
+          showMain.innerHTML='<h3 style="background:red;padding:1vh 1vw"><p style="margin:0 auto; width:fit-content;color:white">No search Results</p></h3>';
+        }else{showAny(anyCont,searchT);}
+  }else if(select.value==3&&text.value!=''){
+        //search by capital
+        const res=await fetch('https://restcountries.com/v3.1/lang/'+searchT+'')
+        const anyCont=await res.json(); 
+        aa.removeAttribute('class');
+        var showMain=document.getElementById('showMain');
+        if(anyCont.status==404){//
+          showMain.innerHTML='<h3 style="background:red;padding:1vh 1vw"><p style="margin:0 auto; width:fit-content;color:white">No search Results</p></h3>';
+        }else{showAny(anyCont,searchT);}
+  }else if(select.value==4&&text.value!=''){
+    //search by capital
+    const res=await fetch('https://restcountries.com/v3.1/currency/'+searchT+'')
+    const anyCont=await res.json(); 
+    aa.removeAttribute('class');
+    var showMain=document.getElementById('showMain');
+    if(anyCont.status==404){//
+      showMain.innerHTML='<h3 style="background:red;padding:1vh 1vw"><p style="margin:0 auto; width:fit-content;color:white">No search Results</p></h3>';
+    }else{showAny(anyCont,searchT);}
+}else if(select.value==5&&text.value!=''){
+  //search by capital
+  const res=await fetch('https://restcountries.com/v3.1/translation/'+searchT+'')
+  const anyCont=await res.json(); 
+  aa.removeAttribute('class');
+  var showMain=document.getElementById('showMain');
+  if(anyCont.status==404){//
+    showMain.innerHTML='<h3 style="background:red;padding:1vh 1vw"><p style="margin:0 auto; width:fit-content;color:white">No search Results</p></h3>';
+  }else{showAny(anyCont,searchT);}
+}
   
   
   
@@ -160,29 +204,21 @@ async function filterFunc(searchS,searchT){
 }
 
 let filterB=document.getElementById('btnS');
-filterB.onclick=()=>{filterFunc(filterS.value,filterT.value)}
-
-
-
-
-
-
-/////////////////
+let input=document.getElementById('filterText');
+select.onchange=()=>{
+  if(select.value==0){select.style.backgroundColor='#ea8595';}else{select.style.backgroundColor='white';}
+}
+filterB.onclick=()=>{
+  if(select.value==0){select.style.backgroundColor='#ea8595';}else{select.style.backgroundColor='white';}
+  if(text.value==''){text.style.backgroundColor='#ea8595';}else{text.style.backgroundColor='white';}
+  if(select.value>0&&text.value!=''){filterFunc(select.value,text.value)}
   
-  
- 
-//return to continents
-function backToCountries()
-{location.reload();}
-
-//back
-backToContinents=()=>{
-  location.href='/';
 }
 
 
+
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%///
-//%%%%%%%%%%%%%%%%%%%%%%%%% show  Europe region %%%%%%%%%%%%%%%%%%%%%%%///
+//%%%%%%%%%%%%%%%%%%%%%%%%% show  one country  %%%%%%%%%%%%%%%%%%%%%%%///
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%///
 //show the selected European Country
 let showOneEur=document.getElementById('showOneCont');
@@ -245,45 +281,62 @@ showContSelected =(data)=>{
  
 //// show one european country //// 
 showCont =(index) =>  {
-  let country=index.innerHTML;
+  let country=index.children[0].getAttribute('dd');
+  console.log(country);
   index.style.backgroundColor='#216daa';
-  index.nextElementSibling.style='display:inline;position:relative;top:11vh;left:-12vw'; 
+  index.children[1].style='display:inline;position:absolute;color:white'; 
   fetch('https://restcountries.com/v3.1/name/'+country+'').then(res=> res.json()).then(data=>{
    showContSelected(data);
    index.style.backgroundColor='#008eff'; 
-   index.nextElementSibling.style.display='none'; 
+   index.children[1].style.display='none'; 
   });
 }
 
 /////// show all europe region //////////
-async function continent(region)
+async function continent(region,el)
 {
-const response=await fetch('https://restcountries.com/v3.1/region/'+region+'') ///*eur[i].name.nativeName.deu.common*/
-const eur=await response.json()
-let names='';
-names+='<div class="flex j-c-s-a bl-back white m-b-md">';
-names+='<h1 id="head">Region Countries</h1>';
-names+='<button class="btn-back white dark-bl-back" onclick="backToContinents()" >Back to countinents</button>'
-names+='</div>';
-names+='<div class="flex flex-countires" >';
-for(i in eur){
-   names +='<div onclick="showCont(this)" class="">'+eur[i].name.common+'</div>'; 
-   names +='<span class="spinner-border spinn none"></span>';     
-}
-names+='</div>';
-let EuropeConts=document.querySelector('#showMain');
-EuropeConts.innerHTML=names;
+  let element=document.getElementById(el);
+  element.style.backgroundColor='blue';
+  const response=region=='North America'||region=='South America'? await fetch('https://restcountries.com/v3.1/subregion/'+region+''):await fetch('https://restcountries.com/v3.1/region/'+region+''); //'+region+'/'+NorthAmerica+'
+  const reg=await response.json()
+  element.style.backgroundColor='#091492';
+  element.style.color='white';
+
+  let names='';
+  names+='<div class="flex j-c-s-a bl-back white m-b-md">';
+  names+='<h1 id="head">Region Countries</h1>';
+  names+='</div>';
+  names+='<div class="flex flex-countires" >';
+  for(i in reg){
+    names +='<div onclick="showCont(this)"><section dd="'+reg[i].name.common+'">'+reg[i].name.common+'</section><span class="spinner-border spinn none"></span></div>'; 
+    //names +='';     
+  }
+  names+="<div class='bottom-div bl-back white flex'><h2></h2></div>"//bottom div
+  names+='</div>';
+
+  let showMain=document.querySelector('#showMain');
+  showMain.innerHTML=names;
 }
 
+//when click on continents
+let showOne=document.getElementById('showOneCont');
 let h1Asia=document.getElementById('h1Asia');
-h1Asia.onclick=()=>{ continent(h1Asia.innerHTML)}
-let h1Afr=document.getElementById('h1Afr');
-h1Afr.onclick=()=>{ continent(h1Afr.innerHTML)}
-let h1Eur=document.getElementById('h1Eur');
-h1Eur.onclick=()=>{ continent(h1Eur.innerHTML)}
+h1Asia.onclick=()=>{showOne.innerHTML=''; continent(h1Asia.children[0].innerHTML,'h1Asia')}
 
-//let div=document.querySelector('.flex-countires>div');
-//div.onclick=()=>{div.style.backgroundColor='red'}
+let h1Afr=document.getElementById('h1Afr');
+h1Afr.onclick=()=>{ showOne.innerHTML=''; continent(h1Afr.children[0].innerHTML,'h1Afr') } //
+
+let h1Eur=document.getElementById('h1Eur');
+h1Eur.onclick=()=>{showOne.innerHTML='';  continent(h1Eur.children[0].innerHTML,'h1Eur');}
+
+let h1Na=document.getElementById('h1Na');
+h1Na.onclick=()=>{ showOne.innerHTML=''; continent(h1Na.children[0].innerHTML,'h1Na');}
+
+let h1Sa=document.getElementById('h1Sa');
+h1Sa.onclick=()=>{ showOne.innerHTML=''; continent(h1Sa.children[0].innerHTML,'h1Sa');}
+
+let h1Oc=document.getElementById('h1Oc');
+h1Oc.onclick=()=>{ showOne.innerHTML=''; continent(h1Oc.children[0].innerHTML,'h1Oc');}
 
 
 

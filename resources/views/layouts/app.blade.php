@@ -8,7 +8,7 @@
     <title>@yield('title')</title> 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <!--<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">-->
 
     <!-- My own css -->
     <link href="{{ url('Front/css/bootstrap.min.css') }}" rel="stylesheet">
