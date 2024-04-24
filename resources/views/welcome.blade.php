@@ -23,7 +23,7 @@
                                 <option value="4">Currency</option>
                                 <option value="5">Translation</option>
                             </select>
-                            <input class="height10 radius" type="text" id="filterText" placeholder="Type country name">
+                            <input class="height10 radius" type="text" id="filterText" placeholder="Type something">
                             <button class="height10 light-gr-back radius" id="btnS">Search</button>
                         </div>
 
